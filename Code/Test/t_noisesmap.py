@@ -5,6 +5,7 @@ sys.path.append(path.join(getcwd(), 'Code'))
 from noisesmap.utils import read_promise_data, get_code_file_path
 from noisesmap.file_tokens import FileTokens
 from noisesmap.noise_handle import NoiseHandle
+from noisesmap.map_tokens import MapTokens
 
 if __name__ == '__main__':
     filebug = read_promise_data('tomcat.csv', 0, 857, [2, 23])
@@ -21,5 +22,8 @@ if __name__ == '__main__':
         except FileNotFoundError as fnf_error:
             ## TODO
             pass
-    noisehd = NoiseHandle()
-    print(noisehd.remove_infrequent_tks(tkslist))
+    noisehd = NoiseHandle(tkslist)
+    noisehd.remove_infrequent_tks()
+    maptk = MapTokens(noisehd.tkslist[:2])
+    maptk.get_num_vec()
+    print(maptk.numerical_vecs)

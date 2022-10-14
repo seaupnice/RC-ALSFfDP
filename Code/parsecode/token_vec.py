@@ -37,10 +37,3 @@ class TokenV:
             elif isinstance(node, self.__nodecategories[2]):
                 tokenslist.append((node.__class__.__name__))
         return tokenslist
-
-
-if __name__ == '__main__':
-    from os import path, getcwd
-    filepath = path.join(getcwd(), 'Data', 'tomcat', 'java', 'org', 'apache', 'AnnotationProcessor.java')
-    tv = TokenV(filepath)
-    print(tv.getTV())

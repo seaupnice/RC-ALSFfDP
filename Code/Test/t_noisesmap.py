@@ -23,7 +23,6 @@ if __name__ == '__main__':
             ## TODO
             pass
     noisehd = NoiseHandle(tkslist)
-    noisehd.remove_infrequent_tks()
-    maptk = MapTokens(noisehd.tkslist[:2])
-    maptk.get_num_vec()
-    print(maptk.numerical_vecs)
+    maptk = MapTokens(noisehd.remove_infrequent_tks())
+    print(maptk.map_length)
+    print(maptk.get_num_vec())

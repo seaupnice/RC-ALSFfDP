@@ -8,11 +8,14 @@ class NoiseHandle:
         self.tkslist = files_tks
     
     def __remove_list_item(self, item : str) -> list:
+        assertflag = False # not find target item
         itemlist = item.split('=')
         for tks in self.tkslist:
             for tk in tks:
                 if tk[0] == itemlist[0] and tk[1] == itemlist[1]:
                     tks.remove(tk)
+                    assertflag = True
+        assert assertflag == True, 'Not find target token which has less than three ocurrences.'
         return self.tkslist
 
     def remove_infrequent_tks(self):
@@ -35,3 +38,4 @@ class NoiseHandle:
                 del tokens_count[tk]
         for tk in list(tokens_count.keys()):
             self.tkslist = self.__remove_list_item(tk)
+        return self.tkslist

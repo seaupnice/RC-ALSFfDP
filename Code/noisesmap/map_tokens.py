@@ -11,6 +11,7 @@ class MapTokens:
         self.numerical_vecs = [] # numerical vectors: one-to-one correspondence tokens_vec
         self.map_length = 0
         self.token_map = [] # sorted token vectors
+        self.__get_map()
     
     def __get_map(self) -> None:
         """Get Map length and sort tokens list.
@@ -26,7 +27,6 @@ class MapTokens:
     def get_num_vec(self) -> None:
         """Get numerical vectors.
         """
-        self.__get_map()
         for tks in self.tokens_vecs:
             num_vec = []
             for tk in tks:
@@ -34,3 +34,4 @@ class MapTokens:
                 num_vec.append(self.token_map.index(flag))
             num_vec.extend([0] * (self.map_length - len(num_vec)))
             self.numerical_vecs.append(num_vec)
+        return self.numerical_vecs
